@@ -48,16 +48,16 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
         <div className="py-6">
           <div className="grid grid-cols-2 gap-y-4">
             <div className="text-gray-500">Species</div>
-            <div className="font-medium text-gray-500">{pokemon.species || 'Unknown'}</div>
+            <div className="font-medium text-gray-700">{pokemon.species || 'Unknown'}</div>
             
             <div className="text-gray-500">Height</div>
-            <div className="font-medium text-gray-500">{formatHeight(pokemon.height)}</div>
+            <div className="font-medium text-gray-700">{formatHeight(pokemon.height)}</div>
             
             <div className="text-gray-500">Weight</div>
-            <div className="font-medium text-gray-500">{formatWeight(pokemon.weight)}</div>
+            <div className="font-medium text-gray-700">{formatWeight(pokemon.weight)}</div>
             
             <div className="text-gray-500">Abilities</div>
-            <div className="font-medium text-gray-500">{pokemon.abilities?.map(ability => capitalizePokemonName(ability)).join(', ') || 'Unknown'}</div>
+            <div className="font-medium text-gray-700">{pokemon.abilities?.map(ability => capitalizePokemonName(ability)).join(', ') || 'Unknown'}</div>
           </div>
         </div>
       </TabContent>
@@ -69,7 +69,7 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
               <>
                 <div className="flex items-center">
                   <span className="w-24 text-gray-500">HP</span>
-                  <span className="w-8 text-right font-medium mr-4">{pokemon.stats.hp}</span>
+                  <span className="w-8 text-right font-medium mr-4 text-gray-700">{pokemon.stats.hp}</span>
                   <div className="h-2 flex-1 bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${pokemon.stats.hp >= 70 ? 'bg-green-500' : (pokemon.stats.hp >= 40 ? 'bg-yellow-500' : 'bg-red-500')} rounded-full`} 
@@ -80,7 +80,7 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
                 
                 <div className="flex items-center">
                   <span className="w-24 text-gray-500">Attack</span>
-                  <span className="w-8 text-right font-medium mr-4">{pokemon.stats.attack}</span>
+                  <span className="w-8 text-right font-medium mr-4 text-gray-700">{pokemon.stats.attack}</span>
                   <div className="h-2 flex-1 bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${pokemon.stats.attack >= 70 ? 'bg-green-500' : (pokemon.stats.attack >= 40 ? 'bg-yellow-500' : 'bg-red-500')} rounded-full`} 
@@ -91,7 +91,7 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
                 
                 <div className="flex items-center">
                   <span className="w-24 text-gray-500">Defense</span>
-                  <span className="w-8 text-right font-medium mr-4">{pokemon.stats.defense}</span>
+                  <span className="w-8 text-right font-medium mr-4 text-gray-700">{pokemon.stats.defense}</span>
                   <div className="h-2 flex-1 bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${pokemon.stats.defense >= 70 ? 'bg-green-500' : (pokemon.stats.defense >= 40 ? 'bg-yellow-500' : 'bg-red-500')} rounded-full`} 
@@ -102,7 +102,7 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
                 
                 <div className="flex items-center">
                   <span className="w-24 text-gray-500">Sp. Atk</span>
-                  <span className="w-8 text-right font-medium mr-4">{pokemon.stats.specialAttack}</span>
+                  <span className="w-8 text-right font-medium mr-4 text-gray-700">{pokemon.stats.specialAttack}</span>
                   <div className="h-2 flex-1 bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${pokemon.stats.specialAttack >= 70 ? 'bg-green-500' : (pokemon.stats.specialAttack >= 40 ? 'bg-yellow-500' : 'bg-red-500')} rounded-full`} 
@@ -113,7 +113,7 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
                 
                 <div className="flex items-center">
                   <span className="w-24 text-gray-500">Sp. Def</span>
-                  <span className="w-8 text-right font-medium mr-4">{pokemon.stats.specialDefense}</span>
+                  <span className="w-8 text-right font-medium mr-4 text-gray-700">{pokemon.stats.specialDefense}</span>
                   <div className="h-2 flex-1 bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${pokemon.stats.specialDefense >= 70 ? 'bg-green-500' : (pokemon.stats.specialDefense >= 40 ? 'bg-yellow-500' : 'bg-red-500')} rounded-full`} 
@@ -124,7 +124,7 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
                 
                 <div className="flex items-center">
                   <span className="w-24 text-gray-500">Speed</span>
-                  <span className="w-8 text-right font-medium mr-4">{pokemon.stats.speed}</span>
+                  <span className="w-8 text-right font-medium mr-4 text-gray-700">{pokemon.stats.speed}</span>
                   <div className="h-2 flex-1 bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${pokemon.stats.speed >= 70 ? 'bg-green-500' : (pokemon.stats.speed >= 40 ? 'bg-yellow-500' : 'bg-red-500')} rounded-full`} 
