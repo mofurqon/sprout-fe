@@ -5,6 +5,7 @@ import TabContent from "@/components/TabContent";
 import Image from "next/image";
 import Link from "next/link";
 import { Pokemon } from "@/types/pokemon";
+import { capitalizePokemonName, formatWeight, formatHeight } from "@/utils/stringUtils";
 
 interface PokemonTabsProps {
   pokemon: Pokemon;
@@ -50,13 +51,13 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
             <div className="font-medium text-gray-500">{pokemon.species || 'Unknown'}</div>
             
             <div className="text-gray-500">Height</div>
-            <div className="font-medium text-gray-500">{pokemon.height || 'Unknown'}</div>
+            <div className="font-medium text-gray-500">{formatHeight(pokemon.height)}</div>
             
             <div className="text-gray-500">Weight</div>
-            <div className="font-medium text-gray-500">{pokemon.weight || 'Unknown'}</div>
+            <div className="font-medium text-gray-500">{formatWeight(pokemon.weight)}</div>
             
             <div className="text-gray-500">Abilities</div>
-            <div className="font-medium text-gray-500">{pokemon.abilities?.join(', ') || 'Unknown'}</div>
+            <div className="font-medium text-gray-500">{pokemon.abilities?.map(ability => capitalizePokemonName(ability)).join(', ') || 'Unknown'}</div>
           </div>
         </div>
       </TabContent>
@@ -153,7 +154,7 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
                       height={80} 
                       className="object-contain"
                     />
-                    <span className="mt-1 font-medium text-gray-500">{evolution.name}</span>
+                    <span className="mt-1 font-medium text-gray-500">{capitalizePokemonName(evolution.name)}</span>
                   </Link>
                   
                   {pokemon.evolutions && index < pokemon.evolutions.length - 1 && (
@@ -175,7 +176,7 @@ export default function PokemonTabs({ pokemon }: PokemonTabsProps) {
               pokemon.moves.map((move, index) => (
                 <div key={index} className="p-3 bg-gray-50 rounded-lg">
                   <div className="font-medium text-gray-500">
-                    {move.move.name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                    {capitalizePokemonName(move.move.name)}
                   </div>
                 </div>
               ))

@@ -2,6 +2,7 @@ import useSWR from 'swr';
 import { useState, useEffect } from 'react';
 import { apiClient, PokemonListResponse, PokemonDetailResponse, PokemonSpeciesResponse, EvolutionChainResponse, getPokemonIdFromUrl, getPokemonTypeColor, formatPokemonStats, getPokemonIdFromSpeciesUrl } from '@/utils/api';
 import { Pokemon } from '@/types/pokemon';
+import { capitalizePokemonName } from '@/utils/stringUtils';
 
 const fetcher = async (url: string) => {
   const response = await apiClient.get(url);
@@ -39,7 +40,7 @@ export function usePokemonList(limit: number = 20, offset: number = 0) {
                 const types = details.data.types;
                 return {
                   id,
-                  name: pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1),
+                  name: capitalizePokemonName(pokemon.name),
                   types: types.map((t: { slot: number, type: { name: string } }) => ({
                     slot: t.slot,
                     type: { name: t.type.name }
@@ -51,7 +52,7 @@ export function usePokemonList(limit: number = 20, offset: number = 0) {
                 // Fallback for any failed requests
                 return {
                   id,
-                  name: pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1),
+                  name: capitalizePokemonName(pokemon.name),
                   types: [{ slot: 1, type: { name: "unknown" } }],
                   image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
                   bgColor: 'blue' as 'green' | 'red' | 'blue'
@@ -110,10 +111,10 @@ export function usePokemonDetail(idOrName: number | string) {
     })),
     image: pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default,
     bgColor: getPokemonTypeColor(pokemon.types[0].type.name),
-    species: pokemon.species.name,
+    species: capitalizePokemonName(pokemon.species.name),
     height: `${(pokemon.height / 10).toFixed(1)}m`,
     weight: `${(pokemon.weight / 10).toFixed(1)}kg`,
-    abilities: pokemon.abilities.map(a => a.ability.name.charAt(0).toUpperCase() + a.ability.name.slice(1)),
+    abilities: pokemon.abilities.map(a => capitalizePokemonName(a.ability.name)),
     stats: formatPokemonStats(pokemon.stats) as Pokemon['stats'],
     moves: pokemon.moves.slice(0, 4).map(m => ({
       move: {
@@ -130,7 +131,7 @@ export function usePokemonDetail(idOrName: number | string) {
     const firstFormId = getPokemonIdFromSpeciesUrl(firstForm.url);
     evolutions.push({
       id: firstFormId,
-      name: firstForm.name.charAt(0).toUpperCase() + firstForm.name.slice(1),
+      name: capitalizePokemonName(firstForm.name),
       image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${firstFormId}.png`
     });
     
@@ -139,7 +140,7 @@ export function usePokemonDetail(idOrName: number | string) {
       const secondFormId = getPokemonIdFromSpeciesUrl(secondForm.url);
       evolutions.push({
         id: secondFormId,
-        name: secondForm.name.charAt(0).toUpperCase() + secondForm.name.slice(1),
+        name: capitalizePokemonName(secondForm.name),
         image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${secondFormId}.png`
       });
       
@@ -149,7 +150,7 @@ export function usePokemonDetail(idOrName: number | string) {
         const thirdFormId = getPokemonIdFromSpeciesUrl(thirdForm.url);
         evolutions.push({
           id: thirdFormId,
-          name: thirdForm.name.charAt(0).toUpperCase() + thirdForm.name.slice(1),
+          name: capitalizePokemonName(thirdForm.name),
           image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${thirdFormId}.png`
         });
       }
