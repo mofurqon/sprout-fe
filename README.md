@@ -2,7 +2,6 @@
 
 A modern, responsive Pokédex web application built with Next.js and TypeScript. This application leverages the [PokéAPI](https://pokeapi.co/) to display information about various Pokémon, including their types, stats, evolutions, and moves.
 
-![Pokémon Application Screenshot](https://via.placeholder.com/800x400?text=Pok%C3%A9dex+Screenshot)
 
 ## Features
 
