@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokédex - A Next.js Application
+
+A modern, responsive Pokédex web application built with Next.js and TypeScript. This application leverages the [PokéAPI](https://pokeapi.co/) to display information about various Pokémon, including their types, stats, evolutions, and moves.
+
+![Pokémon Application Screenshot](https://via.placeholder.com/800x400?text=Pok%C3%A9dex+Screenshot)
+
+## Features
+
+- **Responsive Design**: Works on all device sizes with optimized layouts
+- **Infinite Scroll**: Load more Pokémon as you scroll down the page
+- **Detailed View**: View detailed information about each Pokémon
+- **Type Color Coding**: Visual indication of Pokémon types
+- **Stat Visualization**: Colorful bars representing Pokémon stats
+- **Evolution Chains**: See the evolutionary progression of each Pokémon
+- **Move Lists**: View a list of moves for each Pokémon
+- **Smooth Navigation**: Back-to-top button and navigation between pages
+- **Pokéball UI Theme**: Stylish Pokéball backgrounds and design elements
+
+## Tech Stack
+
+- **Framework**: [Next.js 15.5](https://nextjs.org/) with App Router and React 19.1
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4.0
+- **Data Fetching**: SWR with Axios
+- **Icons**: Custom SVG elements
+- **Image Optimization**: Next.js Image component
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the Pokédex in action.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── page.tsx            # Homepage with Pokémon list
+│   ├── pokemon/[id]/       # Dynamic routes for Pokémon details
+│   └── layout.tsx          # Root layout
+├── components/             # React components
+│   ├── PokemonCard.tsx     # Card component for Pokémon list
+│   ├── PokemonTabs.tsx     # Tabs for Pokémon details
+│   ├── TabContent.tsx      # Tab content container
+│   └── BackToTop.tsx       # Back to top button
+├── hooks/                  # Custom React hooks
+│   └── usePokemon.ts       # Hooks for fetching Pokémon data
+├── types/                  # TypeScript type definitions
+│   └── pokemon.ts          # Pokémon type definitions
+└── utils/                  # Utility functions
+    └── api.ts              # API client and helper functions
+```
 
-## Learn More
+## API Integration
 
-To learn more about Next.js, take a look at the following resources:
+This project uses the [PokéAPI](https://pokeapi.co/), a free RESTful Pokémon API. The application fetches data including:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Basic Pokémon information
+- Type details
+- Stats
+- Evolution chains
+- Moves
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+
+- [PokéAPI](https://pokeapi.co/) for providing the Pokémon data
+- [Next.js](https://nextjs.org/) for the React framework
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+- [Pokémon](https://www.pokemon.com/) for the inspiration
